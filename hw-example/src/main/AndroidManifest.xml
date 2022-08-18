@@ -22,21 +22,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".PrinterReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.storyous.hwbridge_printer.printBitmap" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".TerminalReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.storyous.hwbridge_terminal.payTransaction" />
-            </intent-filter>
-        </receiver>
-
         <service
             android:name=".MyPrintService"
             android:exported="true">

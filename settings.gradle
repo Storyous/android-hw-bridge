@@ -14,7 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ePOS HW Bridge"
 include ':app'
-include ':hwbridge-terminal'
-include ':hwbridge-printer'
 include ':hw-example'
 include ':hwbridge'

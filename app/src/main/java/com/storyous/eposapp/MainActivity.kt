@@ -23,21 +23,17 @@ class MainActivity : AppCompatActivity() {
         with(_binding) {
             print.setOnClickListener {
                 lifecycleScope.launch {
-                    val apps = findAvailablePrinterApps(this@MainActivity)
+                    val serviceInfo = findAvailablePrinterApps(this@MainActivity)
+                        .first()
+                        .serviceInfo
 
                     runCatching {
-                        connectPrinter(
-                            this@MainActivity,
-                            apps.first().serviceInfo
-                        ).use { print(viewToBitmap()) }
+                        connectPrinter(this@MainActivity, serviceInfo).use {
+                            print(viewToBitmap())
+                        }
                     }.onFailure {
                         it.printStackTrace()
                     }
-                    /*
-                    Print(UUID.randomUUID().toString(), viewToBitmap())
-                        .send(this@MainActivity, "com.storyous.hw.example")
-                        
-                     */
                 }
             }
             pay.setOnClickListener {
