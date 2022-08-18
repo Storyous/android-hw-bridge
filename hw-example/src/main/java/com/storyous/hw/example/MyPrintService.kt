@@ -11,6 +11,8 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.UUID
 
+private const val COMPRESS_QUALITY = 100
+
 class MyPrintService : PrintService() {
     override suspend fun print(bitmap: Bitmap) {
         val uri = bitmap.store(this)
@@ -27,7 +29,7 @@ suspend fun Bitmap.store(
 ): Uri = withContext(Dispatchers.IO) {
     File(ctx.getExternalFilesDir(null), "$fileName.png").apply {
         outputStream().use {
-            compress(Bitmap.CompressFormat.PNG, 100, it)
+            compress(Bitmap.CompressFormat.PNG, COMPRESS_QUALITY, it)
         }
     }.toUri()
 }

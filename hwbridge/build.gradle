@@ -45,3 +45,25 @@ dependencies {
     kapt 'com.josesamuel:remoter:2.0.4'
     implementation 'com.josesamuel:remoter-builder:2.0.4'
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            "$project.name"(MavenPublication) {
+                groupId = 'com.github.storyous.hwbridge'
+                artifactId = project.name
+                if (System.getenv("GITHUB_REF_TYPE") == "tag") {
+                    version = System.getenv("GITHUB_REF_NAME")
+                } else {
+                    version = ""
+                }
+
+                from components.release
+                pom {
+                    name = 'Storyous HW Bridge'
+                    description = 'HW Bridge'
+                }
+            }
+        }
+    }
+}
