@@ -10,6 +10,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/storyous/android-hw-bridge")
+            credentials {
+                username = ""
+                password = "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"
+            }
+        }
     }
 }
 rootProject.name = "ePOS HW Bridge"

@@ -47,7 +47,9 @@ dependencies {
 }
 
 afterEvaluate {
+    
     publishing {
+
         publications {
             "$project.name"(MavenPublication) {
                 groupId = 'com.storyous.hwbridge'
