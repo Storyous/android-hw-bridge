@@ -50,7 +50,7 @@ afterEvaluate {
     publishing {
         publications {
             "$project.name"(MavenPublication) {
-                groupId = 'com.github.storyous.hwbridge'
+                groupId = 'com.storyous.hwbridge'
                 artifactId = project.name
                 if (System.getenv("GITHUB_REF_TYPE") == "tag") {
                     version = System.getenv("GITHUB_REF_NAME")
