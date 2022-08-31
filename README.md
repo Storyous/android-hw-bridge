@@ -17,5 +17,5 @@ repositories {
 ```
 
 ``` groovy
-implementation "com.github.storyous.hwbridge:hwbridge:[last_version]"
+implementation 'com.storyous.hwbridge:hwbridge:[version]'
 ```
