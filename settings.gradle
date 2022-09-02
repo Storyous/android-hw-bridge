@@ -7,7 +7,10 @@ pluginManagement {
 }
 
 Properties properties = new Properties()
-properties.load(new File('local.properties').newDataInputStream())
+def propertiesFile = new File('local.properties')
+if (propertiesFile.exists()) {
+    properties.load(propertiesFile.newDataInputStream())
+}
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
