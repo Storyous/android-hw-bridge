@@ -5,13 +5,25 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+Properties properties = new Properties()
+properties.load(new File('local.properties').newDataInputStream())
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/storyous/android-hw-bridge")
+            credentials {
+                username = properties.getProperty('github.pkg.name')
+                password = properties.getProperty('github.pkg.password')
+            }
+        }
     }
 }
+
 rootProject.name = "ePOS HW Bridge"
 include ':app'
 include ':hw-example'

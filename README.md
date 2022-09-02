@@ -17,5 +17,46 @@ repositories {
 ```
 
 ``` groovy
-implementation "com.github.storyous.hwbridge:hwbridge:[last_version]"
+implementation 'com.storyous.hwbridge:hwbridge:[version]'
 ```
+
+## HW app
+
+### Printer
+
+Override `PrintService` that implements `IPrinter` interface
+
+``` kotlin
+class MyPrintService : PrintService() {
+    override suspend fun print(bitmap: Bitmap) {
+        TODO()
+    }
+}
+
+interface IPrinter {
+    suspend fun print(bitmap: Bitmap): Unit
+}
+```
+
+In AndroidManifest use intent filter for new service.
+
+``` xml
+<intent-filter>
+    <action android:name="com.storyous.hwbridge.printer" />
+</intent-filter>
+```
+
+## ePOS app
+
+Create connection to app supporting printer.
+
+``` kotlin
+fun connectPrinter(ctx: Context, serviceInfo: ServiceInfo): Connection<IPrinter>
+```
+
+Helper method to find all printer apps.
+
+``` kotlin
+fun findAvailablePrinterApps(ctx: Context): List<ResolveInfo>
+```
+
