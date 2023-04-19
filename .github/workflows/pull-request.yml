@@ -1,24 +1,26 @@
 name: Android CI
 
 on:
-  push:
-    branches: [ master ]
-    tags-ignore:
-      - '*'
   pull_request:
     branches: [ master ]
+
 jobs:
   test:
     name: Run Unit Tests
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 11
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: 11
-      - name: Detekt check
-        run: bash ./gradlew detekt --stacktrace
-      - name: Unit tests
-        run: bash ./gradlew test --stacktrace
+          java-version: '11'
+          distribution: 'corretto'
+
+      - name: Run Detekt
+        run: ./gradlew detekt
+
+      - name: Run unit tests
+        run: ./gradlew test
