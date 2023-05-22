@@ -41,9 +41,9 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-    implementation 'com.josesamuel:remoter-annotations:2.0.4'
-    kapt 'com.josesamuel:remoter:2.0.4'
-    implementation 'com.josesamuel:remoter-builder:2.0.4'
+    implementation 'com.josesamuel:remoter-annotations:2.0.5'
+    kapt 'com.josesamuel:remoter:2.0.5'
+    implementation 'com.josesamuel:remoter-builder:2.0.5'
 }
 
 afterEvaluate {
